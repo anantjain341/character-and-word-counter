@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background:linear-gradient(to right ,rgb(79, 98, 180),rgb(189, 126, 247));
+            /* height: 100vh; */
+            /* display: flex; */
+            /* align-items:center; */
+            /* justify-content: center; */
+            /* align-content: space-around; */
+            font-family: 'Open sans' , sans-serif;
+
+        }
+        .container{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .counters{ 
+            width: 100% ;
+            display: flex;
+            justify-content: space-around;
+         }
+        .charactersCounter , .wordsCounter{
+            background-color: white;
+            width: 150px;
+            height: 150px;
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items:center;
+            font-size: 50px;
+            font-weight: bolder;
+        }
+        span{
+            color:rgb(42, 43, 40) ;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        textarea{
+            background-color: white;
+            border-radius: 10px;
+            font-size: 25px;
+            padding: 15px;
+            width: 90%;
+            height: 50%;
+            outline: none;
+            resize: none;    
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="counters">
+            <div class="charactersCounter">
+                <span>Character</span>
+                <div class="cCount">0</div>
+            </div>
+            <div class="wordsCounter">
+                <span>Word</span>
+                <div class="wCount">0</div>
+            </div>
+        </div>
+        <textarea id="textArea"></textarea>
+    </div>
+    <script>
+        const display=document.getElementById("textArea");
+        let cCounter=document.querySelector(".cCount");
+        let wCounter=document.querySelector(".wCount");
+
+        display.addEventListener("input",function(){
+            let characters=display.value.replace(/\s/g ,"");//replace all whitespaces from string to count exact no. of chars.
+            cCounter.textContent=characters.length;
+
+            let asd=display.value.split('\n').join(" ").split(' '); 
+            let words= asd.filter((item)=>{return item!=""});
+            console.log(display.value.split('\n').join(" ").split(' '));
+            wCounter.textContent=words.length;
+        })
+    </script>
+</body>
+</html>
